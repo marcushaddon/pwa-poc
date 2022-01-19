@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <title>Demo</title>
+        <meta charset=utf-8>
+        <meta http-equiv=X-UA-Compatible content=IE=edge,chrome=1>
+        <meta name=description content=Demo Project>
+        <meta name=viewport content=width=device-width, initial-scale=1>
+        <link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css>
+        <style type=text/css></style>
+    </head>
+    <body>
+        <p>Let the game begin!</p>
+        <div id="log"></div>
+        <script type=text/javascript>
+          const log = msg => {
+            const msgContainer = document.createElement("div");
+            msgContainer.innerText = msg;
+            document.getElementById("log").appendChild(
+              msgContainer
+            );
+          }
+          let i = 0;
+          let start = new Date().getTime();
+          const tick = () => {
+            const elapsed = Math.floor((new Date().getTime() - start) / 1000);
+            log(`logging message ${i++} at ${elapsed} seconds elapsed`);
+            
+
+            setTimeout(tick, 1000);
+          }
+
+          tick();
+
+          window.onfocus = () => {
+            log("gained focus")
+          }
+
+          window.onblur = () => log("lost focus");
+        
+        </script>
+    </body>
+  </html>
